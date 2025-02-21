@@ -93,14 +93,13 @@ export const issuesSlice = createAppSlice({
             number: issue.number,
             created_at: issue.created_at,
             comments: issue.comments,
-            user: issue.user,
+            user: issue.user.login,
             state:
               issue.state === "closed"
                 ? "Done"
                 : issue.assignees.length
                   ? "In Progress"
                   : "ToDo",
-            author_association: issue.author_association,
           }
         })
         const objOfIssuesArray = {

@@ -12,13 +12,13 @@ const ColumnColorScheme: Record<ColumnName, string> = {
 }
 const Column = (props: { name: ColumnName; issues?: IssueType[] }) => {
   return (
-    <div className="flex flex-col justify-start items-center h-full w-full">
+    <div className="flex flex-col justify-start items-center flex-1 w-[33.33%]">
       <Heading fontSize="2xl" p={5} letterSpacing="wide">
         <Badge
           px={6}
           py={3}
           rounded="lg"
-          fontSize="20px"
+          fontSize={["sm", "md", "lg", "xl"]}
           colorScheme={ColumnColorScheme[props.name]}
         >
           {props.name}
@@ -37,7 +37,7 @@ const Column = (props: { name: ColumnName; issues?: IssueType[] }) => {
             <div
               ref={provided.innerRef}
               {...provided.droppableProps}
-              className="flex flex-col gap-3 h-full"
+              className="flex flex-col gap-3 h-full w-full"
             >
               {props.issues?.map((issue, index) => (
                 <Issue key={issue.id} issue={issue} index={index} />

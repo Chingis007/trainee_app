@@ -1,9 +1,9 @@
 import { IssueType } from "@/features/issues/issuesSlice"
 import { timeSince } from "@/utils/utils"
 import { Draggable } from "@hello-pangea/dnd"
-import React from "react"
-
+import { Box, Text, useMediaQuery } from "@chakra-ui/react"
 const Issue = (props: { issue: IssueType; index: number }) => {
+  // const [isLargerThan700] = useMediaQuery(["(min-width: 800px)"], {})
   return (
     <Draggable draggableId={String(props.issue.id)} index={props.index}>
       {provided => (
@@ -11,28 +11,30 @@ const Issue = (props: { issue: IssueType; index: number }) => {
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
+          className="flex w-full"
         >
           {/* <issueCard key={issue.id} issue={issue} index={index} /> */}
-          <div
-            className="bg-white"
+          <Box
+            className="bg-white flex flex-col w-full"
             style={{
               border: "1px solid black",
               padding: "5px",
               borderRadius: "10px",
-              gap: "10px",
+              gap: "2px",
             }}
             key={props.issue.id}
+            fontSize={["10px", "sm", "lg", "xl"]}
           >
-            <h1 className="truncate">{props.issue.title}</h1>
-            <p className="truncate">
+            <Text truncate={true}>{props.issue.title}</Text>
+            <Text truncate={true}>
               #{props.issue.number} opened{" "}
               {timeSince(props.issue.created_at)}{" "}
-            </p>
-            <p className="truncate">
-              {props.issue.author_association} | Comments:{" "}
+            </Text>
+            <Text truncate={true}>
+              {props.issue.user.login} | Comments:
               {props.issue.comments}
-            </p>
-          </div>
+            </Text>
+          </Box>
         </div>
       )}
     </Draggable>

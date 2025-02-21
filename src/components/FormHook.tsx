@@ -16,7 +16,8 @@ const FormHook = () => {
       url: yup
         .string()
         .matches(
-          /^https:\/\/github\.com\/\w*\/\w*$/,
+          // /^https:\/\/github\.com\/[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}\/.*$/,
+          /^https:\/\/github\.com\/.*\/.*$/,
           "Valid URL example: https://github.com/exampleUser/exampleRepo",
         )
         .required(),
@@ -42,7 +43,7 @@ const FormHook = () => {
       <form
         data-testid="form-test"
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-row justify-center items-center gap-5"
+        className="flex flex-row justify-center items-start gap-5"
       >
         <FormControl
           isInvalid={errors.url ? true : undefined}
