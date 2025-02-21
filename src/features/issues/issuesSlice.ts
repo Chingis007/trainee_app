@@ -21,7 +21,6 @@ export type IssueType = {
   comments: number
   user: UserType
   state: string
-  author_association: string
   [key: string]: any
 }
 
@@ -93,7 +92,7 @@ export const issuesSlice = createAppSlice({
             number: issue.number,
             created_at: issue.created_at,
             comments: issue.comments,
-            user: issue.user.login,
+            user: issue.user,
             state:
               issue.state === "closed"
                 ? "Done"
