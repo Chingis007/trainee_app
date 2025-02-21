@@ -1,4 +1,4 @@
-import { Button, Input } from "@chakra-ui/react"
+import { Button, Input, Link } from "@chakra-ui/react"
 import React, { useState } from "react"
 import { FormControl, FormErrorMessage } from "@chakra-ui/form-control"
 import { useForm } from "react-hook-form"
@@ -40,6 +40,9 @@ const FormHook = () => {
 
   return (
     <div>
+      <Link href="https://github.com/Chingis007/trainee_app">
+        https://github.com/Chingis007/trainee_app
+      </Link>
       <form
         data-testid="form-test"
         onSubmit={handleSubmit(onSubmit)}
